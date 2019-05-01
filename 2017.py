@@ -18,10 +18,11 @@ def kernel(ksize, sigma):
                     res[i][j] = res[i][j] / s
     return res
 
+kern = kernel(100, 3)
 
 def preprocess(img):
     processed_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    processed_img = cv2.filter2D(processed_img, -1, kernel(100, 3))
+    processed_img = cv2.filter2D(processed_img, -1, kern)
     ret,processed_img = cv2.threshold(processed_img, 200, 255,cv2.THRESH_BINARY_INV)
     return processed_img
 
@@ -59,8 +60,6 @@ for r, d, f in os.walk(path_to_slides):
 for r, d, f in os.walk(path_to_frames):
     for file in f:
         addFrame(os.path.join(r, file), file)
-display_image(original_slides[0])
-display_image(frames[5])
 
 for frame in frames:
     res = 0
