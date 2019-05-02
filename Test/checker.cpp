@@ -19,10 +19,17 @@ int main()
     int total = 0;
     int correct = 0;
     for(int i = 1; i <= 835; ++i){
-        total++;
+        
         char a[256], b[256];
+        for(int i = 0; i < 256; ++i){
+            a[i] = '\0';
+            b[i] = '\0';
+        }
         f1.getline(a, 256);
         f2.getline(b, 256);
+        if(a[0] == '\0')
+            break;
+        total++;
         if(strcmp(a, b) == 0)
             correct++;
         else{
