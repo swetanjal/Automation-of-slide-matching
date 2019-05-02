@@ -18,7 +18,7 @@ int main()
     ifstream f2("./d.txt");
     int total = 0;
     int correct = 0;
-    for(int i = 1; i <= 835; ++i){
+    while(true){
         
         char a[256], b[256];
         for(int i = 0; i < 256; ++i){
