@@ -62,7 +62,7 @@ for r, d, f in os.walk(path_to_frames):
         addFrame(os.path.join(r, file), file)
 
 for frame in frames:
-    res = 0
+    res = -1000000000000000000000000000000000000000000000000000000000000
     pos = -1
     counter = 0
     for slide in original_slides:
