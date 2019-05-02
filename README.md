@@ -1,4 +1,5 @@
 # Automation-of-slide-matching
+### Team Members: Teja Sai Dhondu(20171075), Swetanjal Murati Dutta(20171077), Nishant Sharma(20171079)  
 ## Generating Test Data:
 - Follow format in ./Data/sample_test.
 
