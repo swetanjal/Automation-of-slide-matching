@@ -64,7 +64,7 @@ for frame in frames:
             res = tmp
             pos = counter
         counter += 1
-    print(frames_names[ccc] + " " + original_slides_names[pos])
+    #print(frames_names[ccc] + " " + original_slides_names[pos])
     matched_slide.append(pos)
     ccc += 1
 c = 0
@@ -73,7 +73,7 @@ for frame in frames:
     output.append(frames_names[c] + " " + original_slides_names[matched_slide[c]] + "\n")
     c = c + 1
 output.sort()
-f = open("2017.txt", "w+")
+f = open("20171075_20171077_20171079.txt", "w+")
 for o in output:
         f.write(o)
 f.close()

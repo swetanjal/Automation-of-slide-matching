@@ -7,7 +7,7 @@
 - cd Test
 - g++ checker.cpp
 - ./a.out
-- Enter the path to the directory containing _rolllno_.txt. Eg: ../Data/sample_test
+- Enter the path to the directory containing \_rolllno\_.txt. Eg: ../Data/sample_test
 
 ## Run script:
-- python3 2017.py path/to/slides path/to/frames
+- python3 20171075\_20171077\_20171079.py path\_to\_slides path\_to\_frames
