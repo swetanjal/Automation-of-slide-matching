@@ -3,27 +3,20 @@ import scipy
 import numpy as np
 import os
 import sys
+from scipy.io import loadmat
 
 def kernel(ksize, sigma):
-    res = np.zeros((ksize, ksize))
-    s = 0
-    for i in range(ksize):
-        for j in range(ksize):
-                a = ((i * i) + (j * j)) / (2.0 * sigma * sigma)
-                var = (-1.0 / np.pi * sigma * sigma * sigma * sigma) * (1 - a) * np.exp(-a)
-                res[i][j] = var
-                s = s + res[i][j] 
-    for i in range(ksize):
-            for j in range(ksize):
-                    res[i][j] = res[i][j] / s
+    data = loadmat('filter.mat')
+    res = data['filt']
     return res
 
-kern = kernel(100, 3)
+kern = kernel(101, 3)
 
 def preprocess(img):
     processed_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     processed_img = cv2.filter2D(processed_img, -1, kern)
-    ret,processed_img = cv2.threshold(processed_img, 200, 255,cv2.THRESH_BINARY_INV)
+    processed_img[processed_img < 1] = 0
+    processed_img[processed_img >= 1] = 255
     return processed_img
 
 def display_image(img):
@@ -49,7 +42,7 @@ def addSlide(path, name):
     original_slides.append(preprocess(cv2.imread(path)))
     original_slides_names.append(name)
 def addFrame(path, name):
-    frames.append(preprocess(cv2.imread(path))) 
+    frames.append(preprocess(cv2.imread(path)))
     frames_names.append(name)
 
 
@@ -60,7 +53,7 @@ for r, d, f in os.walk(path_to_slides):
 for r, d, f in os.walk(path_to_frames):
     for file in f:
         addFrame(os.path.join(r, file), file)
-
+ccc = 0
 for frame in frames:
     res = -1000000000000000000000000000000000000000000000000000000000000
     pos = -1
@@ -71,7 +64,9 @@ for frame in frames:
             res = tmp
             pos = counter
         counter += 1
+    print(frames_names[ccc] + " " + original_slides_names[pos])
     matched_slide.append(pos)
+    ccc += 1
 c = 0
 output = []
 for frame in frames:
